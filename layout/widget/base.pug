@@ -14,6 +14,7 @@ html(lang=config.language class= `appearance-${ appearance }`)
     title= pageTitle
     meta(name="description" content= config.description || theme.user && theme.user.description)
     meta(name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no, initial-scale=1")
+    meta(name="baidu-site-verification" content="code-QWECStRQ5h")
 
     <!-- Google Analytics -->
     if(theme.ga_track_id)
@@ -25,27 +26,39 @@ html(lang=config.language class= `appearance-${ appearance }`)
 
         ga('create', '#{theme.ga_track_id}', '#{ theme.ga_domain || "auto" }');
         ga('send', 'pageview');
-    <!-- End Google Analytics -->
-
-    <!-- Baidu Analytics -->
-    if (theme.ba_track_id)
+    if(theme.google_track_id)
+      script(async src="https://www.googletagmanager.com/gtag/js?id="+'#{theme.google_track_id}')
       script.
-        var _hmt = _hmt || [];
-        (function() {
-        var hm = document.createElement("script");
-        hm.src = "//hm.baidu.com/hm.js?" + '#{theme.ba_track_id}';
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-        })();
-    <!-- End Baidu Analytics -->
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', '#{theme.google_track_id}');         
+    <!-- End Google Analytics -->
+  <!-- Baidu Analytics -->
+  if (theme.ba_track_id)
+    script.
+      var _hmt = _hmt || [];
+      (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?" + '#{theme.ba_track_id}';
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+      })();
+  <!-- End Baidu Analytics -->
 
-    link(rel="icon" href= url_for(theme.favicon))
-    link(rel="stylesheet" href= url_for('/style/common/bulma.css'))
-    link(rel="stylesheet" href= url_for('/style/base.css'))
-    link(rel="stylesheet" href= url_for('/style/common/helper.css'))
-    script(src= url_for("/js/common.js"))
-    block head
-
+  link(rel="icon" href= url_for(theme.favicon))
+  link(rel="stylesheet" href= url_for('/style/common/bulma.css'))
+  link(rel="stylesheet" href= url_for('/style/base.css'))
+  link(rel="stylesheet" href= url_for('/style/common/helper.css'))
+  link(rel="stylesheet" href= url_for('https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.9.0/katex.min.css'))
+  script(src= url_for("/js/common.js"))
+  if (theme.fancybox)
+    link(rel="stylesheet" href= url_for('/js/fancybox/jquery.fancybox.min.css'))
+    script(src= url_for("/js/fancybox/jquery-3.5.1.min.js"))
+    script(src= url_for("/js/fancybox/jquery.fancybox.min.js"))
+    script(src= url_for("/js/wrapImage.js"))
+  block head
+  script(src= url_for("/js/modifyLive2dCss.js"))
   body.is-flex.is-flex-direction-column
     include widget-header
     main
@@ -57,7 +70,7 @@ html(lang=config.language class= `appearance-${ appearance }`)
         span Copyright ©
         - var author = (theme.user && theme.user.name) || config.author || ''
         span= ' ' + author + ' ' + new Date().getFullYear()
-      div.is-flex.is-justify-content-center.is-flex-wrap-wrap
+      //div.is-flex.is-justify-content-center.is-flex-wrap-wrap
         p Powered by Hexo &verbar;&nbsp;
         p.is-flex.is-justify-content-center
           a(title="Hexo theme author" href='//github.com/haojen') Theme by Haojen&nbsp;

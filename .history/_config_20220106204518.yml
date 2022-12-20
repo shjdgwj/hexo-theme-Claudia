@@ -1,0 +1,73 @@
+# main menu navigation
+menu:
+  Home: /
+  About: /about
+  Archive: /archives
+
+#widgets: //显示顺序为recent_posts category archive tag
+#  - tag
+#  - archive
+#  - category
+#  - recent_posts
+#  - profile
+widgets: //显示顺序为category tag archive
+  - archive
+  - tag
+  - category
+  - profile
+
+# social config
+social:
+  zhihu:
+  twitter: 
+  facebook: 
+  linkedin:
+  instagram: 
+  github: shjdgwj
+
+user:
+  name: Einreiz
+  avatar: /images/avatar.png
+  location: Shanghai or XDU
+  description: 随性而不失个性，有设计而不留痕迹
+  footnotes: # footnotes
+
+# documents: https://github.com/utterance/utterances
+# API config: https://utteranc.es/
+comment_utteranc:
+  enable: true
+  repo: shjdgwj/shjdgwj.github.io # your blog repo
+  issue-term: title
+# documents: https://valine.js.org/quickstart.html
+comment_valine:
+  enable: false
+  appId:
+  appKey:
+
+comment_disqus:
+    enable: false
+    url:  # the url of your website main domain like this https://xxx.xxx/
+    name: # the short name in disqus
+
+# dark
+# light
+# user-can-set
+appearance: auto # Default value is auto
+
+# Miscellaneous
+favicon: /images/favicon.png
+# Google Analytics
+ga_track_id: 
+ga_domain: 
+
+# Google Analytics
+google_track_id: G-417KDS6GNP
+
+# Baidu Analytics
+ba_track_id: 87328770706fd4df574fc57300b5e868
+
+# picture of about page
+about_pic: about.png
+
+#fancybox 图片放大
+fancybox: true

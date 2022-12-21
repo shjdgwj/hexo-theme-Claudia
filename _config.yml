@@ -79,6 +79,6 @@ ba_track_id: 87328770706fd4df574fc57300b5e868
 about_pic: about.png
 
 #fancybox 图片放大
-#fancybox: true
-image_zoom:
-  enable: true
+fancybox: true
+# image_zoom:
+#   enable: true
